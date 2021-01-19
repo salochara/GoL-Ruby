@@ -19,10 +19,16 @@ end
 class World
   attr_accessor :matrix
   def initialize
-    @matrix = Matrix[[Cell.new(0,0,true),Cell.new(0,1,true),Cell.new(0,2),Cell.new(0,3)],
+    @matrix = Matrix[[Cell.new(0,0),Cell.new(0,1),Cell.new(0,2),Cell.new(0,3)],
                      [Cell.new(1,0),Cell.new(1,1),Cell.new(1,2),Cell.new(1,3)],
                      [Cell.new(2,0),Cell.new(2,1),Cell.new(2,2),Cell.new(2,3)],
-                     [Cell.new(3,0),Cell.new(3,1),Cell.new(3,2),Cell.new(3,3,true)]]
+                     [Cell.new(3,0),Cell.new(3,1),Cell.new(3,2),Cell.new(3,3)]]
+  end
+
+  def randomly_populate
+    @matrix.each do |cell|
+      cell.alive = [true,false].sample
+    end
   end
 
   def row_count
@@ -34,12 +40,16 @@ class World
   end
 end
 
+world = World.new
+world.randomly_populate
+p world.matrix
+
 def count_neighbors(cell,matrix)
   i = cell.x
   j = cell.y
-
   matrix_height = matrix.matrix.row_count
   matrix_width = matrix.matrix.column_count
+
   result = 0
 
   above = (i - 1 + matrix_height ) % matrix_height
@@ -57,7 +67,6 @@ def count_neighbors(cell,matrix)
   result += 1 if matrix.matrix[below, right].alive?
 
   result
-
 end
 
 def iterate_world(world)
@@ -82,6 +91,7 @@ def iterate_world(world)
         new_matrix[cell.x,cell.y].alive = false
       end
 
+      # Cell is not alive
     else
       if neighbors == 3
         new_matrix[cell.x,cell.y].alive = true
@@ -94,8 +104,3 @@ def iterate_world(world)
 
   new_matrix
 end
-
-
-world = World.new
-new_world = iterate_world(world)
-p new_world
