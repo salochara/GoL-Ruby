@@ -1,4 +1,5 @@
 require 'byebug'
+require 'matrix'
 
 class Cell
   attr_accessor :alive, :x, :y
@@ -97,4 +98,4 @@ end
 
 world = World.new
 new_world = iterate_world(world)
-p new_world.world
+p new_world
