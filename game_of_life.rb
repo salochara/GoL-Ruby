@@ -1,8 +1,6 @@
 require 'byebug'
 require 'matrix'
-
-
-
+require_relative 'world'
 
 class Game
   attr_accessor :world
