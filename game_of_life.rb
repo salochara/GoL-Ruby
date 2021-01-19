@@ -19,10 +19,12 @@ end
 class World
   attr_accessor :matrix
   def initialize
-    @matrix = Matrix[[Cell.new(0,0),Cell.new(0,1),Cell.new(0,2),Cell.new(0,3)],
-                     [Cell.new(1,0),Cell.new(1,1),Cell.new(1,2),Cell.new(1,3)],
-                     [Cell.new(2,0),Cell.new(2,1),Cell.new(2,2),Cell.new(2,3)],
-                     [Cell.new(3,0),Cell.new(3,1),Cell.new(3,2),Cell.new(3,3)]]
+    @matrix = Matrix[
+      [Cell.new(0,0),Cell.new(0,1),Cell.new(0,2),Cell.new(0,3)],
+      [Cell.new(1,0),Cell.new(1,1),Cell.new(1,2),Cell.new(1,3)],
+      [Cell.new(2,0),Cell.new(2,1),Cell.new(2,2),Cell.new(2,3)],
+      [Cell.new(3,0),Cell.new(3,1),Cell.new(3,2),Cell.new(3,3)]
+    ]
   end
 
   def randomly_populate
@@ -31,18 +33,23 @@ class World
     end
   end
 
-  def row_count
-    @matrix.row_count
+  def print_matrix_to_console
+    i = 0
+    self.matrix.each do |cell|
+      print cell.alive ? "1 " :  "0 "
+      i +=1
+      if i == self.matrix.column_count
+        print "\n"
+        i = 0
+      end
+    end
   end
 
-  def column_count
-    @matrix.column_count
-  end
+
+
 end
 
-world = World.new
-world.randomly_populate
-p world.matrix
+
 
 def count_neighbors(cell,matrix)
   i = cell.x
@@ -78,7 +85,7 @@ def iterate_world(world)
   world.matrix.each do |cell|
 
     neighbors = count_neighbors(cell,world)
-    p "neighbors of #{cell.x},#{cell.y} : #{neighbors}"
+    # p "neighbors of #{cell.x},#{cell.y} : #{neighbors}"
 
     if cell.alive?
       if neighbors < 2
@@ -104,3 +111,15 @@ def iterate_world(world)
 
   new_matrix
 end
+
+# New world
+world = World.new
+# randomly populate it
+world.randomly_populate
+# print randomly populated world into the console
+world.print_matrix_to_console
+
+# check neighbors to iterate
+new_world = iterate_world(world)
+# print result
+new_world
