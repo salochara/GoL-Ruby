@@ -2,10 +2,10 @@ require 'byebug'
 
 class Cell
   attr_accessor :alive, :x, :y
-  def initialize(x,y)
+  def initialize(x,y,alive=false)
     @x = x
     @y = y
-    @alive = false
+    @alive = alive
   end
 
   def alive?
@@ -16,35 +16,21 @@ end
 
 
 class World
-  attr_accessor :grid
-
-  def initialize(rows=3, cols=3)
-    @rows = rows
-    @cols = cols
-    @cells = []
-    Matrix.column_vector([4,5,6])
-    @grid = Array.new(3) do |row|
-      Array.new(3) do |col|
-        cell = Cell.new(row,col)
-        @cells << cell
-      end
-    end
-
-
+  attr_accessor :matrix
+  def initialize
+    @matrix = Matrix[[Cell.new(0,0,true),Cell.new(0,1,true),Cell.new(0,2),Cell.new(0,3)],
+                     [Cell.new(1,0),Cell.new(1,1),Cell.new(1,2),Cell.new(1,3)],
+                     [Cell.new(2,0),Cell.new(2,1),Cell.new(2,2),Cell.new(2,3)],
+                     [Cell.new(3,0),Cell.new(3,1),Cell.new(3,2),Cell.new(3,3,true)]]
   end
 
-  def set_initial_state
-    @world = @cells.each do |cell|
-      cell.alive = [true,false].sample
-    end
+  def row_count
+    @matrix.row_count
   end
 
-
-  def count_neighbors(cell)
-
-
+  def column_count
+    @matrix.column_count
   end
-
 end
 
 def count_neighbors(cell,matrix)
@@ -108,8 +94,7 @@ def iterate_world(world)
   new_matrix
 end
 
-world = World.new
 
-p '-----'
-world.set_initial_state
-p world.grid
+world = World.new
+new_world = iterate_world(world)
+p new_world.world
