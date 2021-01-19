@@ -73,6 +73,41 @@ def count_neighbors(cell,matrix)
 
 end
 
+def iterate_world(world)
+  new_matrix = Matrix[[Cell.new(0,0),Cell.new(0,1),Cell.new(0,2),Cell.new(0,3)],
+                      [Cell.new(1,0),Cell.new(1,1),Cell.new(1,2),Cell.new(1,3)],
+                      [Cell.new(2,0),Cell.new(2,1),Cell.new(2,2),Cell.new(2,3)],
+                      [Cell.new(3,0),Cell.new(3,1),Cell.new(3,2),Cell.new(3,3)]]
+
+  world.matrix.each do |cell|
+
+    neighbors = count_neighbors(cell,world)
+    p "neighbors of #{cell.x},#{cell.y} : #{neighbors}"
+
+    if cell.alive?
+      if neighbors < 2
+        new_matrix[cell.x,cell.y].alive = false
+      end
+      if neighbors == 2 || neighbors == 3
+        new_matrix[cell.x,cell.y].alive = true
+      end
+      if neighbors > 3
+        new_matrix[cell.x,cell.y].alive = false
+      end
+
+    else
+      if neighbors == 3
+        new_matrix[cell.x,cell.y].alive = true
+      else
+        new_matrix[cell.x,cell.y].alive = false
+      end
+
+    end
+  end
+
+  new_matrix
+end
+
 world = World.new
 
 p '-----'
