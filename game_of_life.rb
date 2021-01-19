@@ -1,71 +1,8 @@
 require 'byebug'
 require 'matrix'
 
-class Cell
-  attr_accessor :alive, :x, :y
-  def initialize(x,y,alive=false)
-    @x = x
-    @y = y
-    @alive = alive
-  end
-
-  def alive?
-    @alive
-  end
-
-end
 
 
-
-
-class World
-  attr_accessor :matrix
-  def initialize
-    @matrix = Matrix[
-      [Cell.new(0,0 ),Cell.new(0,1),Cell.new(0,2),Cell.new(0,3)],
-      [Cell.new(1,0),Cell.new(1,1),Cell.new(1,2),Cell.new(1,3)],
-      [Cell.new(2,0),Cell.new(2,1),Cell.new(2,2),Cell.new(2,3)],
-      [Cell.new(3,0),Cell.new(3,1),Cell.new(3,2),Cell.new(3,3)]
-    ]
-  end
-
-  def randomly_populate
-    self.matrix.each do |cell|
-      cell.alive = [true,false].sample
-    end
-  end
-
-
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-=begin
-# New world
-world = World.new
-# randomly populate it
-world.randomly_populate
-# print randomly populated world into the console
-world.print_matrix_to_console
-# check neighbors to iterate
-new_world = World.new
-new_world = iterate_world(world)
-# print result
-p '------------'
-new_world.print_matrix_to_console
-=end
 
 class Game
   attr_accessor :world
@@ -122,8 +59,6 @@ class Game
     end
   end
 
-
-
   def live_or_die_next_generation(results, matrix)
     i = 0
     matrix.each do|cell|
@@ -132,9 +67,6 @@ class Game
     end
     matrix
   end
-
-
-
 
   def count_neighbors(cell,matrix)
     i = cell.x
@@ -166,7 +98,4 @@ world = World.new
 world.randomly_populate
 
 game = Game.new(world)
-game.iterate_world(2)
-
-p 'end'
-
+game.iterate_world(10)

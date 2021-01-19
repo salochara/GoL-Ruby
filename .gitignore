@@ -3,6 +3,9 @@
 
 # User-specific stuff
 .idea
+coverage
+tmp
+matrix2.rb
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
