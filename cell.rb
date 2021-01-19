@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The Cell class is responsible for creating cells.
 # A cell has:
 # @x_position, @y_position and a boolean value for @alive
