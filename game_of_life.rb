@@ -1,10 +1,13 @@
 # frozen_string_literal: true
+
 require 'byebug'
 require 'matrix'
 require_relative 'world'
 
 # The Game class is responsible for creating the game.
 # A game is played with a given world
+# A game instance has a:
+# @world instance
 class Game
   attr_accessor :world
 
@@ -12,7 +15,7 @@ class Game
     @world = world
   end
 
-  def iterate_world(iterations)
+  def tick(iterations)
     iterations_counter = 0
     world = self.world.matrix
 
@@ -55,10 +58,10 @@ class Game
   end
 
   def live_or_die_next_generation(results, matrix)
-    i = 0
+    counter = 0
     matrix.each do |cell|
-      cell.alive = results[i]
-      i += 1
+      cell.alive = results[counter]
+      counter += 1
     end
     matrix
   end
@@ -71,6 +74,9 @@ class Game
 
     neighbors_around_cell = 0
 
+    # Using modulus, we "wrap" the matrix. This means that each
+    # cell strictly interacts with its 8 neighbors even if it's
+    # located in an edge.
     above = (i - 1 + matrix_height) % matrix_height
     below = (i + 1) % matrix_height
     left = (j - 1 + matrix_width) % matrix_width
@@ -93,4 +99,4 @@ world = World.new
 world.randomly_populate
 
 game = Game.new(world)
-game.iterate_world(3)
+game.tick(3)

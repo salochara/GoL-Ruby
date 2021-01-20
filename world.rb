@@ -3,6 +3,8 @@
 require_relative 'cell'
 # The World class is responsible for creating a world with a Matrix.
 # The Matrix data structure is defined in the 'matrix.rb' file included in this project
+# A world instance has:
+# @matrix, initialized as a Matrix using the Matrix Ruby library
 class World
   attr_reader :matrix
 
