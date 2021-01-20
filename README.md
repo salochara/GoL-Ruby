@@ -35,5 +35,11 @@ is used as a representation of the board in the Game of Life.
 Run `ruby game_of_life.rb` <br>
 By default, it will run for 3 generations. This can easily be changed in the `game_of_life.rb` file.
 
+For tests, I am using `rspec`. <br>
+To run the tests, simply run
+`rspec spec_game_of_life.rb`
+
+![Game of Life](image.png?raw=true "Title")
+
 #### Enjoy! 
 Done by Salomón Charabati
