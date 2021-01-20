@@ -36,4 +36,4 @@ Run `ruby game_of_life.rb` <br>
 By default, it will run for 3 generations. This can easily be changed in the `game_of_life.rb` file.
 
 #### Enjoy! 
-Coded by Salomón Charabati
+Done by Salomón Charabati
