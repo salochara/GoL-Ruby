@@ -3,9 +3,12 @@
 Table of contents
 =================
 
-<!--ts-->
-* [Project Description](#Project description)
-<!--te-->
+* [Game of Life](#game-of-life)
+    * [Table of contents](#table-of-contents)
+      * [Project description](#project-description)
+      * [Rules in the Game of Life](#rules-in-the-game-of-life)
+      * [Proposed solution](#proposed-solution)
+
 
 
 ### Project description
