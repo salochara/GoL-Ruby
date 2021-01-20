@@ -33,7 +33,7 @@ is used as a representation of the board in the Game of Life.
 
 ### Usage
 Run `ruby game_of_life.rb` <br>
-By default, it will run for 3 generations. This can easily be changed in the `game_of_life.rb` file.
+By default, it will run for **3 generations**. This can easily be changed in the `game_of_life.rb` file.
 
 For tests, I am using `rspec`. <br>
 To run the tests, simply run
