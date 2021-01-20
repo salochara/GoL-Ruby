@@ -6,6 +6,7 @@
 coverage
 tmp
 matrix2.rb
+.byebug_history
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
