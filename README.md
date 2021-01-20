@@ -1,13 +1,10 @@
 # Game of Life
 
-Table of contents
-=================
-
-* [Game of Life](#game-of-life)
-    * [Table of contents](#table-of-contents)
-      * [Project description](#project-description)
-      * [Rules in the Game of Life](#rules-in-the-game-of-life)
-      * [Proposed solution](#proposed-solution)
+### Table of contents
+* [Project description](#project-description)
+* [Game of Life rules](#rules-in-the-game-of-life)
+* [Proposed solution](#proposed-solution)
+* [Usage](#usage)
 
 
 
@@ -33,3 +30,10 @@ Also, I cover the case where even the cells on the board's edges interact with i
 that the board is 'wrapped' and every cell in it interacts with eight neighbors. <br>
 I am using the [Matrix library](https://ruby-doc.org/stdlib-2.5.1/libdoc/matrix/rdoc/Matrix.html) which represents a mathematical matrix. This 
 is used as a representation of the board in the Game of Life.
+
+### Usage
+Run `ruby game_of_life.rb` <br>
+By default, it will run for 3 generations. This can easily be changed in the `game_of_life.rb` file.
+
+#### Enjoy! 
+Coded by Salomón Charabati
